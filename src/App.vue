@@ -2,7 +2,7 @@
   <div class="container">
     <app-header></app-header>
     <app-quote-form @newQuote="onNewQuote"></app-quote-form>
-    <app-quote-list :quotes="quotes"></app-quote-list>
+    <app-quote-list :quotes="quotes" @deletedQuote="onDeletedQuote"></app-quote-list>
     <app-quote-info></app-quote-info>
   </div>
 </template>
@@ -23,6 +23,9 @@
     methods: {
       onNewQuote (newQuote) {
         this.quotes.push(newQuote);
+      },
+      onDeletedQuote(deletedQuote) {
+        this.quotes.splice(deletedQuote, 1)
       }
     },
     components: {
