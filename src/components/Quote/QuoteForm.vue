@@ -1,10 +1,10 @@
 <template>
   <div class="row justify-content-center">
     <div class="col-md-12">
-      <form autocomplete="off" novalidate>
+      <form @submit.prevent="addQuote" autocomplete="off" novalidate>
         <label>Quote</label>
         <textarea v-model="quote" rows="3" class="form-control"></textarea>
-        <button class="btn btn-success mt-3" @click.prevent="addQuote">Add Quote</button>
+        <button class="btn btn-success mt-3">Add Quote</button>
       </form>
     </div>
   </div>
@@ -19,6 +19,9 @@
     },
     methods: {
       addQuote () {
+        if (!this.quote) {
+          return alert('Quote is required')
+        }
         this.$emit('newQuote', this.quote)
         this.quote = null
       }

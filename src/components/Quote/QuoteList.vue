@@ -1,5 +1,5 @@
 <template>
-  <div v-if="quotes.length" class="row mt-5">
+  <div v-if="quotes.length" class="row">
     <app-quote-item v-for="(quote, i) in quotes" v-bind:key="i" @click.native="deleteQuote(i)">{{ quote }}</app-quote-item>
   </div>
 </template>
